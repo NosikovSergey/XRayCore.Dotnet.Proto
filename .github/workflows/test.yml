@@ -17,3 +17,8 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '8.0.x'
+
+      - name: Pack NuGet
+        run: |
+          VER="0.1.${GITHUB_RUN_NUMBER}"
+          dotnet pack Package\XrayCore.MTProto.Proto.csproj -c Release -p:PackageVersion=$VER
