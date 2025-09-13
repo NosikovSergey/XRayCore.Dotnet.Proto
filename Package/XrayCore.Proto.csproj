@@ -1,16 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-    <PackageId>XrayCore.Proto</PackageId>
-    <Version>0.1.0</Version>
-    <Authors>Nosikov Sergey</Authors>
-    <Description>Proto files extracted from XTLS/Xray-core (MPL-2.0). Package contains only .proto files under `protos/`.</Description>
-    <PackageProjectUrl>https://github.com/XTLS/Xray-core</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/XTLS/Xray-core</RepositoryUrl>
-    <PackageLicenseExpression>MPL-2.0</PackageLicenseExpression>
-  
-    <IncludeBuildOutput>false</IncludeBuildOutput>
-  </PropertyGroup>
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <PackageId>XrayCore.Proto</PackageId>
+        <Version>0.1.0</Version>
+        <Authors>Nosikov Sergey</Authors>
+        <Description>Generated gRPC client from XTLS/Xray-core proto</Description>
+        <PackageLicenseExpression>MPL-2.0</PackageLicenseExpression>
+    </PropertyGroup>
 
     <ItemGroup>
         <PackageReference Include="Grpc.Tools" Version="2.60.0" PrivateAssets="All" />
@@ -21,11 +17,6 @@
     <ItemGroup>
         <Protobuf Include="../externals/Xray-core/**/*.proto"
                   ProtoRoot="../externals/Xray-core"
-                  Pack="true"
-                  PackagePath="build/protos"
-                  
-                  GrpcServices="Client"/>
-
-        
+                  GrpcServices="Client" />
     </ItemGroup>
 </Project>
