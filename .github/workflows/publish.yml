@@ -18,7 +18,7 @@ jobs:
       - name: Pack NuGet
         run: |
           VER="0.1.${GITHUB_RUN_NUMBER}"
-          dotnet pack XrayCore.MTProto.Proto.csproj -c Release -p:PackageVersion=$VER
+          dotnet pack Package\XrayCore.MTProto.Proto.csproj -c Release -p:PackageVersion=$VER
 
       - name: Publish to NuGet
         if: ${{ secrets.NUGET_API_KEY != '' }}
@@ -26,3 +26,4 @@ jobs:
           dotnet nuget push bin/Release/*.nupkg \
             --api-key "${{ secrets.NUGET_API_KEY }}" \
             --source https://api.nuget.org/v3/index.json
+
