@@ -18,7 +18,14 @@
         <PackageReference Include="Grpc.Net.Client" Version="2.60.0" />
     </ItemGroup>
 
-  <ItemGroup>
-    <None Include="../externals/Xray-core/**/*.proto" Pack="true" PackagePath="protos/" />
-  </ItemGroup>
+    <ItemGroup>
+        <Protobuf Include="../externals/Xray-core/**/*.proto"
+                  ProtoRoot="../externals/Xray-core"
+                  Pack="true"
+                  PackagePath="build/protos"
+                  
+                  GrpcServices="Client"/>
+
+        
+    </ItemGroup>
 </Project>
