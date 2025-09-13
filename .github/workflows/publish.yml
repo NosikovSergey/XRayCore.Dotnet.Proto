@@ -1,0 +1,57 @@
+name: Build & Publish Proto NuGet
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 3 * * 0"  # еженедельно, вс 03:00 UTC
+
+jobs:
+  pack:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          submodules: true
+
+      - name: Ensure submodule present (fallback clone if missing)
+        shell: bash
+        run: |
+          if [ ! -d "externals/Xray-core/.git" ]; then
+            echo "Submodule not initialized, cloning upstream..."
+            rm -rf externals/Xray-core || true
+            git clone --depth 1 https://github.com/XTLS/Xray-core.git externals/Xray-core
+          else
+            echo "Updating submodule to latest origin/main (detached, no commit)"
+            git -C externals/Xray-core fetch --depth 1 origin
+            git -C externals/Xray-core checkout origin/main
+          fi
+
+      - name: Extract .proto files
+        shell: bash
+        run: |
+          rm -rf protos || true
+          mkdir -p protos
+          rsync -a --prune-empty-dirs --include '*/' --include '*.proto' --exclude '*' externals/Xray-core/ protos/
+
+          echo "Proto files copied:"
+          find protos -name "*.proto" | wc -l
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Pack NuGet (proto-only)
+        shell: bash
+        run: |
+          VER="0.1.${GITHUB_RUN_NUMBER}"
+          dotnet pack XrayCore.Proto.csproj -c Release -p:PackageVersion=$VER
+          ls -l bin/Release
+
+      - name: Publish to NuGet (if API key provided)
+        if: ${{ secrets.NUGET_API_KEY != '' }}
+        shell: bash
+        run: |
+          dotnet nuget push bin/Release/*.nupkg             --api-key "${{ secrets.NUGET_API_KEY }}"             --source https://api.nuget.org/v3/index.json
