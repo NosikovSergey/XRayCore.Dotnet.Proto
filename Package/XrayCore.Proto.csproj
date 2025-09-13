@@ -19,7 +19,7 @@
                   ProtoRoot="../externals/Xray-core"
                   Link="Protos/%(RecursiveDir)%(Filename)%(Extension)"
                   Pack="true" 
-                  PackagePath="Protos/"
+                  PackagePath="Xray/Protos/"
                   GrpcServices="Client" />
     </ItemGroup>
 </Project>

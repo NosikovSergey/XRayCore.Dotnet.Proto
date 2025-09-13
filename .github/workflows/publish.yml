@@ -1,7 +1,7 @@
 name: Publish NUGET
 
 on:
-  workflow_dispatch: # запуск только вручную
+  workflow_dispatch:
 
 jobs:
   build-and-publish:
@@ -10,6 +10,9 @@ jobs:
 
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          submodules: true
+          fetch-depth: 0
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
