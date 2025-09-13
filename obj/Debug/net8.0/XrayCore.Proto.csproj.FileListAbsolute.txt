@@ -1,0 +1,12 @@
+C:\My\Repositories\xray-protos-starter\bin\Debug\net8.0\XrayCore.Proto.deps.json
+C:\My\Repositories\xray-protos-starter\bin\Debug\net8.0\XrayCore.Proto.dll
+C:\My\Repositories\xray-protos-starter\bin\Debug\net8.0\XrayCore.Proto.pdb
+C:\My\Repositories\xray-protos-starter\obj\Debug\net8.0\XrayCore.Proto.GeneratedMSBuildEditorConfig.editorconfig
+C:\My\Repositories\xray-protos-starter\obj\Debug\net8.0\XrayCore.Proto.AssemblyInfoInputs.cache
+C:\My\Repositories\xray-protos-starter\obj\Debug\net8.0\XrayCore.Proto.AssemblyInfo.cs
+C:\My\Repositories\xray-protos-starter\obj\Debug\net8.0\XrayCore.Proto.csproj.CoreCompileInputs.cache
+C:\My\Repositories\xray-protos-starter\obj\Debug\net8.0\XrayCore.Proto.sourcelink.json
+C:\My\Repositories\xray-protos-starter\obj\Debug\net8.0\XrayCore.Proto.dll
+C:\My\Repositories\xray-protos-starter\obj\Debug\net8.0\refint\XrayCore.Proto.dll
+C:\My\Repositories\xray-protos-starter\obj\Debug\net8.0\XrayCore.Proto.pdb
+C:\My\Repositories\xray-protos-starter\obj\Debug\net8.0\ref\XrayCore.Proto.dll

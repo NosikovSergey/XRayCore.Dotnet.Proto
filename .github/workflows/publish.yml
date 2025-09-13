@@ -1,9 +1,7 @@
 name: Build & Publish Proto NuGet
 
 on:
-  workflow_dispatch:
-  schedule:
-    - cron: "0 3 * * 0"  # еженедельно, вс 03:00 UTC
+  workflow_dispatch: # только вручную
 
 jobs:
   pack:
@@ -54,4 +52,6 @@ jobs:
         if: ${{ secrets.NUGET_API_KEY != '' }}
         shell: bash
         run: |
-          dotnet nuget push bin/Release/*.nupkg             --api-key "${{ secrets.NUGET_API_KEY }}"             --source https://api.nuget.org/v3/index.json
+          dotnet nuget push bin/Release/*.nupkg \
+            --api-key "${{ secrets.NUGET_API_KEY }}" \
+            --source https://api.nuget.org/v3/index.json
