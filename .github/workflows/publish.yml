@@ -1,4 +1,4 @@
-name: Test Actions
+name: Publish NUGET
 
 on:
   workflow_dispatch: # запуск только вручную
@@ -7,7 +7,7 @@ jobs:
   hello:
     runs-on: ubuntu-latest
     steps:
-    
+
       - name: Checkout
         uses: actions/checkout@v4
 
@@ -19,7 +19,7 @@ jobs:
       - name: Pack NuGet
         run: |
           VER="0.1.${GITHUB_RUN_NUMBER}"
-          dotnet pack Package\XrayCore.MTProto.Proto.csproj -c Release -p:PackageVersion=$VER
+          dotnet pack Package\XrayCore.Proto.csproj -c Release -p:PackageVersion=$VER
 
       - name: Publish to NuGet
         run: |
