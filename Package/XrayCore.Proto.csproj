@@ -10,11 +10,15 @@
     <PackageLicenseExpression>MPL-2.0</PackageLicenseExpression>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <IncludeBuildOutput>false</IncludeBuildOutput>
-    <NoBuild>false</NoBuild>
   </PropertyGroup>
 
+    <ItemGroup>
+        <PackageReference Include="Grpc.Tools" Version="2.60.0" PrivateAssets="All" />
+        <PackageReference Include="Google.Protobuf" Version="3.25.1" />
+        <PackageReference Include="Grpc.Net.Client" Version="2.60.0" />
+    </ItemGroup>
+
   <ItemGroup>
-    <!-- Упаковываем все .proto из локальной папки protos/ внутрь nupkg под путём protos/ -->
-    <None Include="protos/**/*.proto" Pack="true" PackagePath="protos/" />
+    <None Include="../externals/Xray-core/**/*.proto" Pack="true" PackagePath="protos/" />
   </ItemGroup>
 </Project>
