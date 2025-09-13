@@ -1,0 +1,28 @@
+name: Publish MTProto NuGet
+
+on:
+  workflow_dispatch: # запуск вручную
+
+jobs:
+  pack:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Pack NuGet
+        run: |
+          VER="0.1.${GITHUB_RUN_NUMBER}"
+          dotnet pack XrayCore.MTProto.Proto.csproj -c Release -p:PackageVersion=$VER
+
+      - name: Publish to NuGet
+        if: ${{ secrets.NUGET_API_KEY != '' }}
+        run: |
+          dotnet nuget push bin/Release/*.nupkg \
+            --api-key "${{ secrets.NUGET_API_KEY }}" \
+            --source https://api.nuget.org/v3/index.json
