@@ -17,6 +17,9 @@
     <ItemGroup>
         <Protobuf Include="../externals/Xray-core/**/*.proto"
                   ProtoRoot="../externals/Xray-core"
+                  Link="Protos/%(RecursiveDir)%(Filename)%(Extension)"
+                  Pack="true" 
+                  PackagePath="Protos/"
                   GrpcServices="Client" />
     </ItemGroup>
 </Project>
