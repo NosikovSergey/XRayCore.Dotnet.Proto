@@ -3,14 +3,14 @@
     <TargetFramework>net8.0</TargetFramework>
     <PackageId>XrayCore.Proto</PackageId>
     <Version>0.1.0</Version>
-    <Authors>you</Authors>
+    <Authors>Nosikov Sergey</Authors>
     <Description>Proto files extracted from XTLS/Xray-core (MPL-2.0). Package contains only .proto files under `protos/`.</Description>
     <PackageProjectUrl>https://github.com/XTLS/Xray-core</PackageProjectUrl>
     <RepositoryUrl>https://github.com/XTLS/Xray-core</RepositoryUrl>
     <PackageLicenseExpression>MPL-2.0</PackageLicenseExpression>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <IncludeBuildOutput>false</IncludeBuildOutput>
-    <NoBuild>true</NoBuild>
+    <NoBuild>false</NoBuild>
   </PropertyGroup>
 
   <ItemGroup>
