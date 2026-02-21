@@ -1,70 +1,40 @@
 # XrayCore.Proto
 
-NuGet-пакет с автоматически сгенерированными gRPC-клиентами на основе
-`.proto` файлов проекта **Xray-core**.
+XrayCore.Proto is a NuGet package that provides automatically generated
+C# gRPC client code based on the official Xray-core `.proto`
+definitions.
 
-------------------------------------------------------------------------
+This project does not modify or extend the protocol. It simply compiles
+the original `.proto` files into .NET client classes and distributes
+them as a convenient NuGet package.
 
-## Оригинальный проект
+## Purpose
 
-Этот пакет основан на официальном репозитории:
+The package is intended for developers who want to:
 
--   **XTLS/Xray-core**
--   GitHub: https://github.com/XTLS/Xray-core
+-   Integrate with Xray-core via gRPC from .NET applications
+-   Build management panels or backend services around Xray
+-   Use official protocol definitions without manually generating code
 
-Весь исходный протокол, API и бизнес-логика принадлежат авторам
-Xray-core.\
-Данный пакет лишь предоставляет удобную .NET-сборку с готовыми
-gRPC-клиентами.
+## Installation
 
-------------------------------------------------------------------------
-
-## Что это такое?
-
-`XrayCore.Proto` - это:
-
--   📦 Сборка `.proto` файлов Xray-core
--   🔧 Автоматическая генерация C# gRPC Client
--   🚀 Готовый NuGet-пакет для использования в .NET
--   📁 Включённые оригинальные `.proto` файлы внутри пакета
-
-Проект **не изменяет протокол** --- он компилирует оригинальные `.proto`
-в C# классы.
-
-------------------------------------------------------------------------
-
-## Параметры пакета
-
--   **TargetFramework**: `net8.0`
--   **PackageId**: `XrayCore.Proto`
--   **Лицензия**: `MPL-2.0`
--   **Автор**: Nosikov Sergey
-
-### Используемые зависимости
-
--   `Grpc.Tools`
--   `Google.Protobuf`
--   `Grpc.Net.Client`
-
-------------------------------------------------------------------------
-
-## Установка
-
-### Через CLI
+### Using .NET CLI
 
 ``` bash
 dotnet add package XrayCore.Proto
 ```
 
-### Через NuGet Package Manager
+### Using NuGet Package Manager
 
 ``` powershell
 Install-Package XrayCore.Proto
 ```
 
-------------------------------------------------------------------------
+## Basic Usage
 
-## Пример использования
+Make sure Xray-core is running with the gRPC API enabled.
+
+Example:
 
 ``` csharp
 using Grpc.Net.Client;
@@ -79,55 +49,17 @@ var response = await client.GetInboundUsersAsync(new GetInboundUsersRequest
 });
 ```
 
-> ⚠️ Убедитесь, что Xray-core запущен с включённым gRPC API.
+## Upstream Project
 
-------------------------------------------------------------------------
+This package is based entirely on the official Xray-core repository:
 
-## Как собирается пакет
+https://github.com/XTLS/Xray-core
 
-Используются оригинальные `.proto` файлы из:
+All protocol definitions and API behavior belong to the Xray-core
+project and its authors.
 
-    ../externals/Xray-core/**/*.proto
+## License
 
-В `.csproj` используется:
-
-``` xml
-<Protobuf Include="../externals/Xray-core/**/*.proto"
-          ProtoRoot="../externals/Xray-core"
-          Pack="true"
-          PackagePath="Xray/Protos/"
-          GrpcServices="Client" />
-```
-
-Особенности сборки:
-
--   Генерируются только **Client** сервисы
--   `.proto` файлы включаются внутрь NuGet-пакета
--   Namespace формируется на основе структуры оригинального репозитория
-
-------------------------------------------------------------------------
-
-## Назначение
-
-Пакет предназначен для:
-
--   Создания .NET клиентов к Xray-core
--   Автоматизации управления Xray через gRPC
--   Интеграции Xray в backend-сервисы и панели управления
-
-------------------------------------------------------------------------
-
-## Важно
-
--   Пакет **не содержит Xray-core**
--   Пакет **не изменяет API**
--   Версия пакета не обязательно соответствует версии Xray-core
--   При обновлении Xray-core требуется пересборка
-
-------------------------------------------------------------------------
-
-## Лицензирование
-
--   `.proto` файлы распространяются согласно лицензии оригинального
-    проекта --- MPL-2.0.
--   Данный пакет распространяется под MPL-2.0.
+The `.proto` definitions are licensed according to the upstream
+Xray-core project (MPL-2.0).\
+This package is distributed under the same license.
