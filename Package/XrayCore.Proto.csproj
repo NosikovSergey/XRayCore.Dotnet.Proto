@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <TargetFramework>net8.0</TargetFramework>
+        <TargetFramework>net6.0;net8.0;net10.0</TargetFramework>
         <PackageId>XrayCore.Proto</PackageId>
         <Version>0.1.0</Version>
         <Authors>Nosikov Sergey</Authors>
